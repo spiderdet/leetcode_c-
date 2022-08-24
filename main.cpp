@@ -9,11 +9,8 @@
 #include <queue>
 #include <forward_list>
 //#include "25 reverse_kgroup.h"
-#include <algorithm>
+
 #include <tuple>
-#include <set>
-#include <unordered_set>
-#include <unordered_map>
 #include <mutex>
 #include "utils.h"
 //#include "215 k_largest.h"
@@ -26,17 +23,17 @@
 //#include<atomic>
 //#include <semaphore>
 #include "meituan_1.h"
-
-
 #include <map>
+#include <set>
+#include <unordered_set>
+#include <unordered_map>
+#include <algorithm>
 #include <iostream>
 #include <vector>
 using namespace std;
 
 
-
 int main(){
-    MS_TEST2::test();
-//    test();
+
     return 0;
 }
