@@ -7,7 +7,7 @@
 #include <iostream>
 #include <vector>
 #include <tuple>
-#include "utils.h"
+#include "utils/utils.h"
 namespace lc210{
     using namespace std;
     vector<int> res;

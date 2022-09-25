@@ -3,7 +3,7 @@
 #include <iostream>
 #include <vector>
 #include <memory>
-#include "utils.h"
+#include "utils/utils.h"
 namespace lc102 {
     using namespace std;
     using namespace utils;

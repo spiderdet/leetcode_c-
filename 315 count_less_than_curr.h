@@ -7,7 +7,7 @@
 #include <iostream>
 #include <vector>
 #include <tuple>
-#include "utils.h"
+#include "utils/utils.h"
 namespace lc315 {
     using namespace std;
     vector<tuple<int,int>> temp_nums;

@@ -7,7 +7,8 @@
 #include <iostream>
 #include <vector>
 #include <tuple>
-#include "utils.h"
+#include <random>
+#include "utils/show_anything.h"
 namespace lc912 {
     using namespace std;
     vector<int> temp;
@@ -29,7 +30,7 @@ namespace lc912 {
                 nums[p] = nums[r++];
             }
         }
-        utils::show_vector(nums,left,right);
+        show_anything_h::show_vector(nums,left,right);
     }
 
     void mergeSort(vector<int> &nums, int left, int right) {
@@ -71,6 +72,36 @@ namespace lc912 {
         fastSort(nums, left, pivot - 1);
         fastSort(nums, pivot + 1, right);
     }
+    void fast_sort_optimized(vector<int>& nums, int left, int right) {
+        if (right <= left) return;
+        //randomize
+        random_device rd;
+        default_random_engine eng(rd());
+        int l, r, pivot,temp,temp2;
+        while(right > left){ //通过这种方式减少一次递归函数栈的使用！模仿STL的sort函数，还可以加上
+            uniform_int_distribution<int> dis(left,right); //随机数左右都是闭区间
+            temp2 = dis(eng);
+            temp = nums[temp2];
+            nums[temp2] = nums[left];
+            nums[left] = temp;
+            l = left + 1, r = right, pivot = nums[left];
+            while (true) {
+                while (l <= r && nums[l] <= pivot) ++l;
+                while (l <= r && nums[r] >= pivot) --r;
+                if (l > r) break;
+                temp = nums[l];
+                nums[l] = nums[r];
+                nums[r] = temp;
+                ++l;
+                --r;
+            }
+            temp = nums[r];//记住r是pivot点！
+            nums[r] = pivot;
+            nums[left] = temp;
+            fast_sort_optimized(nums,left,r-1);
+            left = r+1;
+        }
+    }
     vector<int> sortArray(vector<int> &nums) {
         // fastSort(nums,0,nums.size()-1);
         temp = nums;
@@ -80,12 +111,12 @@ namespace lc912 {
 
     void test(){
         vector<int> v1 = {5,2,3,1}, v2={5,1,1,2,0,0};
-        utils::show_vector(v1);
+        show_anything_h::show_vector(v1);
         sortArray(v1);
-        utils::show_vector(v1);
-        utils::show_vector(v2);
+        show_anything_h::show_vector(v1);
+        show_anything_h::show_vector(v2);
         sortArray(v2);
-        utils::show_vector(v2);
+        show_anything_h::show_vector(v2);
     }
 }// end of namespace
 #endif //LEETCODE_912_SORT_H
