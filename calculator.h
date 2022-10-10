@@ -6,12 +6,17 @@
 #include <map>
 #include <algorithm>
 #include <cassert> //为了assert
-#define DEBUG
+//#define DEBUG
 using namespace std;
 class divide_zero:public exception{
 public:
     divide_zero(){}
     const char * what() const noexcept override{ cerr <<"divide by zero" <<endl;return nullptr;}
+};
+class unknown_input:public exception{
+public:
+    unknown_input(){}
+    const char * what() const noexcept override{cerr << "the charactor inputed is undefined\n";return nullptr;}
 };
 void calcu_last_two(vector<int>& num_stack, vector<char>& op_stack){
     int temp = num_stack.back();
@@ -71,9 +76,8 @@ int calculator_with_backets(string s){
     vector<char> op_stack;
     map<char,int> allowed_op = {{'+',1},{'-',1},{'*',2},{'/',2},{'(',0},{')',3}};
     for(int i = 0;i<n;++i){
-        if(s[i]>='0' && s[i]<='9'){
-            num*=10;
-            num += (s[i]-'0');
+        if(isdigit(s[i])){
+            num = num*10+(s[i]-'0');
             if(i == n-1){
                 num_stack.push_back(num);
                 break;
@@ -102,9 +106,8 @@ int calculator_with_backets(string s){
             }
         }
         else{
-#ifdef DEBUG
-            cout << "unknown charactor! " << s[i] <<endl;
-#endif
+            cout << "unknown charactor: " << s[i] <<endl;
+            throw(unknown_input());
         }
     }
 #ifdef DEBUG

@@ -12,4 +12,4 @@ set(CMAKE_CXX_STANDARD 11)
 #multi-thread/coutABCiteratively.hmulti-thread/child_main_print_iteratively.h
 #"84. largest_rectangle_in_histogram.h"
 add_executable(leetcode main.cpp utils/utils.h  utils/sort.h utils/show_anything.h
-        calculator.h)
+        calculator.h utils/myMath.h utils/input_helper.h "407 trapping rain water2.h" utils/myAlgorithm.h "utils/Binary Indexed Tree.h" exams/leina.h utils/popcount.h)

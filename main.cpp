@@ -1,4 +1,4 @@
-
+#include <ratio>
 #include <typeinfo>
 #include <random>
 #include <string>
@@ -14,9 +14,12 @@
 #include <chrono>
 #include <thread>
 #include <ctime>
+#include <limits>
+#include <cassert>
 #include "utils/utils.h"
 #include "utils/show_anything.h"
 #include <functional>
+#include <numeric>
 #include <set>
 #include <unordered_set>
 #include <unordered_map>
@@ -24,46 +27,37 @@
 #include <map>
 #include <iostream>
 #include <vector>
-#include "calculator.h"
+#include <winsock2.h>
+#include "utils/input_helper.h"
+#include "utils/Binary Indexed Tree.h"
+#include "utils/popcount.h"
 //#define DEBUG
 using namespace std;
-#define _for(i,a,b) for(int i = a; i<b;++i)
 
-bool comp(const pair<int,int>& a,const pair<int,int>& b ){return a.first<b.first;}
-template<typename _comp>void func(_comp comp);
-class Base{
-public:
-    virtual void func(){cout << "in A" <<endl;}
-};
-class Derived: public Base{
-public:
-    virtual void func() override{cout << "in B " << endl;}
-};
+#define _for(i,a,b) for(int i = a; i<b;++i
+
+//class node{
+//    int value;
+//public:
+//    node(int x):value(x){}
+////如果上面的单参数构造函数用了explicit修饰，会报错 error: converting to 'node' from initializer list
+//// would use explicit constructor 'node::node(int)'
+//    node():node(0){}//委托构造，保证默认构造函数value=0
+//    node operator+(const node& other) const{return node(value + other.value);}
+//    node& operator+=(const node& other) {value += other.value; return *this;}
+//    friend ostream& operator<<(ostream& os, const node& obj);
+//};
+//ostream& operator<<(ostream& os, const node& obj){os<< obj.value; return os;}
+//
+
 int main()
 {
-//    pair<int,int> arr[30];
-//    random_device rd;
-//    default_random_engine eng(rd());
-//    uniform_int_distribution<int> dis(1,10);
-//    int count[10] = {0}, temp;
-//    _for(i,0,30){
-//        temp = dis(eng);
-//        arr[i]=pair<int,int>(temp,count[temp-1]++);
-//    }
-//    for(auto &a:arr){
-//        cout << a.first << " " << a.second << ", ";
-//    }
-//    cout << endl;
-//    sort(arr,arr+30,comp);
-//    stable_sort()
-//    for(auto &a:arr){
-//        cout << a.first << " " << a.second << ", ";
-//    }
-//    cout << endl;
-
-//    unordered_map<int,int> m = {{1,0},{9,0},{7,0},{2,0},{3,0},{5,0},{4,0},{6,0},{8,0}};
-//    for(auto it=m.begin();it!=m.end();it++ ){
-//        cout << it->first << " "  << it->second << endl;
-//    }
-    test_without_brackets();
+//    vector<pair<int,int>> temp = {{1,2},{1,4}};
+//    vector<node> A = {{1},{2},{3},{4},{5},{6},{7},{8},{9}};
+//    BIT_h::BIT<node> bit(A);
+//    bit.add(1,2);
+//    cout << bit.query(6);
+//    node nd1(1),nd2(2),nd3(3);
+//    cout << (nd1+=nd2)+nd3 << " " << nd1;
+//    cout << __builtin_popcount(3);
 }
