@@ -12,7 +12,7 @@ namespace input_helper_h{
     /**
      * convert numpy format matrix to vector<vector<int>> matrix,
      * e.g. [[3,3,3,3,3],[3,2,2,2,3],[3,2,1,2,3],[3,2,2,2,3],[3,3,3,3,3]]
-     * this function will read cin until \n or EOF, so add \n before contents afterwards if plan to read other
+     * this function will read cin until \n or EOF, so increment \n before contents afterwards if plan to read other
      * information in cin after this function.
      * @param file_in whether cin redirect to file input or not
      * @param file address of input file

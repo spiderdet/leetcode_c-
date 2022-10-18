@@ -28,22 +28,22 @@ namespace lc407{
             cout << endl;
         }
 #endif
-        typedef tuple<int,int,int> TP;
+        typedef tuple<int,int,int> water_x_y_tuple;//分别代表 水位高度，x,y
         vector<vector<bool>> visited(rows,vector<bool>(cols,false));
-        priority_queue<TP,vector<TP>,comp<TP>> borders;
+        priority_queue<water_x_y_tuple,vector<water_x_y_tuple>,comp<water_x_y_tuple>> borders;
         //initialize visited and borders
         for(int i =0;i<cols;++i){
             visited[0][i] = visited[rows-1][i] = true;
             if(i>0&& i<cols-1){
-                borders.push(TP(heightMap[0][i],0,i));
-                borders.push(TP(heightMap[rows-1][i],rows-1,i));
+                borders.push(water_x_y_tuple(heightMap[0][i], 0, i));
+                borders.push(water_x_y_tuple(heightMap[rows - 1][i], rows - 1, i));
             }
         }
         for(int i =0;i<rows;++i){
             visited[i][0] = visited[i][cols-1] = true;
             if(i>0&& i<rows-1){
-                borders.push(TP(heightMap[i][0],i,0));
-                borders.push(TP(heightMap[i][cols-1],i,cols-1));
+                borders.push(water_x_y_tuple(heightMap[i][0], i, 0));
+                borders.push(water_x_y_tuple(heightMap[i][cols - 1], i, cols - 1));
             }
         }
 #ifdef DEBUG
@@ -52,7 +52,7 @@ namespace lc407{
         //pop shortest border, regard its value as water height. then consider 4 cells around this popped border
         //if not visited, update its height and put it into borders.
         int dirs[] = {0,1,0,-1,0}, new_x, new_y, result=0, temp;
-        TP shortest_border;
+        water_x_y_tuple shortest_border;
         while(!borders.empty()){
             shortest_border = borders.top();
             borders.pop();
@@ -70,7 +70,7 @@ namespace lc407{
                              << ", up to now result is " << result << endl;
                     }
 #endif
-                    borders.push(TP(max(get<0>(shortest_border),heightMap[new_x][new_y]),new_x,new_y));
+                    borders.push(water_x_y_tuple(max(get<0>(shortest_border), heightMap[new_x][new_y]), new_x, new_y));
                 }
             }
         }

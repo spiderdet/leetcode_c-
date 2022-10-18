@@ -3,6 +3,7 @@
 #include <iostream>
 #include <numeric>
 #include <ctime>
+#include <set>
 #include <random>
 #include <chrono>
 #include <limits> // 为了std::numeric_limits<uint32_t>::max()

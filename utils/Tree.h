@@ -6,7 +6,7 @@
 #include <memory>
 #include <queue>
 #include <string>
-namespace TreeNode_h{
+namespace Tree_h{
     using namespace std;
     struct TreeNode {
         int val;

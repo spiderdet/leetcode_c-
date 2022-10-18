@@ -41,5 +41,7 @@ namespace myAlgorithm_h{
         inplace_rotate(v2,0,6,8);
         show_anything_h::show_vector(v2);
     }
+
+
 }
 #endif //MAIN_CPP_MYALGORITHM_H
