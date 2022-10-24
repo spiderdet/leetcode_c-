@@ -7,9 +7,9 @@
 #include "utils/input_helper.h"
 using namespace std;
 namespace lc407{
-#define DEBUG
+//#define DEBUG
     template<typename T> struct comp{
-        bool operator()(const T& a, const T& b){ return get<0>(b) < get<0>(a);}
+        bool operator()(const T& a, const T& b){ return get<0>(b) < get<0>(a);}//或者利用pair,tuple自己重载的<也可以
     };
     /**
      * maintain a priority_queue of borders
